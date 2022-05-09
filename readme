@@ -6,6 +6,7 @@ Zadání:
  - aplikace bude napsána v Ruby on Rails frameworku
  - aplikace bude implementovat API kompatibilní s https://gitlab.com/municz/piskvorky-server-sinatra (a s vašimi klienty)
  - přidejte do tohoto readme instrukce pro spuštění a nastavení serveru lokálně
+ - odevzdání jako obvykle pomocí Merge Requestu, CI je nakonfigurovaná na spuštění Rubocopa s nastavením pro Ruby on Rails
 
 Doporučení:
  - není potřeba aplikaci psát tak, aby ji šlo deploynout na nějaké konkrétní platformě (ale zakázané to není)
