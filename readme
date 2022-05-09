@@ -1,0 +1,14 @@
+Předchozím úkolem bylo upravit CLI piškvorek tak, aby bylo možné hrát na vzdáleném serveru.
+
+Tento úkol je implementovat server pro vzdálené hraní piškvorek s použitím vašich klientů.
+
+Zadání:
+ - aplikace bude napsána v Ruby on Rails frameworku
+ - aplikace bude implementovat API kompatibilní s https://gitlab.com/municz/piskvorky-server-sinatra (a s vašimi klienty)
+ - přidejte do tohoto readme instrukce pro spuštění a nastavení serveru lokálně
+
+Doporučení:
+ - není potřeba aplikaci psát tak, aby ji šlo deploynout na nějaké konkrétní platformě (ale zakázané to není)
+ - není nutné, aby aplikace obsahovala webové UI
+ - jako DB stačí sqlite, ale není to podmínka
+ - doporučujeme použít Rails Scaffold se základním nastavením pro API aplikaci - https://guides.rubyonrails.org/api_app.html (pokud si nechcete dopsat i webové UI).
