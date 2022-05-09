@@ -20,6 +20,6 @@ stages:          # List of stages for jobs, and their order of execution
 rubocop_job:       # This job runs in the build stage, which runs first.
   stage: rubocop
   script:
-    - gem install rubocop
+    - gem install rubocop rubocop-rails
     - rm -f .rubocop*
-    - rubocop --fail-level W --display-only-fail-level-offenses
+    - rubocop --fail-level W --display-only-fail-level-offenses --require rubocop-rails
