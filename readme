@@ -2,6 +2,17 @@ Předchozím úkolem bylo upravit CLI piškvorek tak, aby bylo možné hrát na 
 
 Tento úkol je implementovat server pro vzdálené hraní piškvorek s použitím vašich klientů.
 
+## Instalace:
+`bundle install`
+
+`rake db:setup` a `rake db:migrate`
+
+## Spusteni:
+
+`rails s`
+API je pak dostupne z http://127.0.0.1:3000/games
+
+
 Zadání:
  - aplikace bude napsána v Ruby on Rails frameworku
  - aplikace bude implementovat API kompatibilní s https://gitlab.com/municz/piskvorky-server-sinatra (a s vašimi klienty)
