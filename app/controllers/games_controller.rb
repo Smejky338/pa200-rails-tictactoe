@@ -1,5 +1,5 @@
 class GamesController < ApplicationController
-  before_action :set_game, only: %i[ show update destroy ]
+  before_action :set_game, only: %i[show update destroy]
 
   PLAYER_MARKS = %w[X O]
 
@@ -17,12 +17,12 @@ class GamesController < ApplicationController
 
   # POST /games
   def create
-    if params['game']['player1'].nil? || params['game']['player2'].nil?
-      @game = Game.new(name: params['game']['name'])
-    else
-      @game = Game.new(name: params['game']['name'],
+    @game = if params['game']['player1'].nil? || params['game']['player2'].nil?
+              Game.new(name: params['game']['name'])
+            else
+              Game.new(name: params['game']['name'],
                        player1: params['game']['player1'], player2: params['game']['player2'])
-    end
+            end
 
     if @game.save
       render json: @game # , status: :created, location: @game
@@ -54,8 +54,8 @@ class GamesController < ApplicationController
 
   private
 
-    # Use callbacks to share common setup or constraints between actions.
-    def set_game
-      @game = Game.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_game
+    @game = Game.find(params[:id])
+  end
 end

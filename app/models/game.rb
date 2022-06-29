@@ -1,4 +1,3 @@
-
 # Game implementation
 class Game < ApplicationRecord
   serialize :board
@@ -42,7 +41,7 @@ class Game < ApplicationRecord
   # Returns nil if cell already taken or do nothing if player=nil or out of matrix's range(bounds)
   def try_place(row, col)
     return nil if state.nil?
-    
+
     begin
       @errors.append('Cell already taken!') unless board['matrix'][row][col].nil?
     rescue NoMethodError
