@@ -44,11 +44,7 @@ class Game < ApplicationRecord
   def try_place(row, col)
     return nil if state.nil?
 
-    begin
-      @errors.append('Cell already taken!') unless board['matrix'][row][col].nil?
-    rescue NoMethodError
-      @errors.append("Out of board range. Pick a number between 0 and #{board_size - 1}")
-    end
+    @errors.append('Cell already taken!') unless board['matrix'][row][col].nil?
     return unless @errors.empty?
 
     board['matrix'][row][col] = current_symbol
