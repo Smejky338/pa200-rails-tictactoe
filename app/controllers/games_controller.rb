@@ -17,13 +17,8 @@ class GamesController < ApplicationController
 
   # POST /games
   def create
-    @game = if params['game']['player1'].nil? || params['game']['player2'].nil?
-              Game.new(name: params['game']['name'])
-            else
-              Game.new(name: params['game']['name'],
-                       player1: params['game']['player1'], player2: params['game']['player2'])
-            end
-
+    @game = Game.new(name: params['game']['name'],
+                     player1: params['game']['player1'], player2: params['game']['player2'])
     if @game.save
       render json: @game # , status: :created, location: @game
     else
