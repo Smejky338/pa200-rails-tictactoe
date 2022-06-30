@@ -1,5 +1,5 @@
 class GamesController < ApplicationController
-  before_action :set_game, only: %i[show update destroy]
+  before_action :set_game, only: %i[show destroy turn]
 
   PLAYER_MARKS = %w[X O]
 
@@ -29,7 +29,6 @@ class GamesController < ApplicationController
   # POST /games/1/turn
   # play a turn. Return 422 if unsuccessful.
   def turn
-    @game = Game.find_by(id: params['id'])
     if @game
       if @game.make_turn(params)
         render json: @game
