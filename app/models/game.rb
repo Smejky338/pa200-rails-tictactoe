@@ -15,8 +15,8 @@ class Game < ApplicationRecord
     self.matrix = Array.new(board_size) { Array.new(board_size) }
     self.board = { 'matrix' => matrix, 'size' => board_size }
     self.state = %w[waiting_for_player1 waiting_for_player2].sample
-    self.player1 = 'X'
-    self.player2 = 'O'
+    self.player1 ||= 'X'
+    self.player2 ||= 'O'
   end
 
   def current_symbol
