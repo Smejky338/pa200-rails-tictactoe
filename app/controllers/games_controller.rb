@@ -17,11 +17,9 @@ class GamesController < ApplicationController
 
   # POST /games
   def create
-    params.require(:game).permit(:name, :player1, :player2)
-    @game = Game.new(name: params['game']['name'],
-                     player1: params['game']['player1'], player2: params['game']['player2'])
+    @game = Game.new(params.require(:game).permit(:name, :player1, :player2))
     if @game.save
-      render json: @game # , status: :created, location: @game
+      render json: @game
     else
       render json: @game.errors, status: :unprocessable_entity
     end
