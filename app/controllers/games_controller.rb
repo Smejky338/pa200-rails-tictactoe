@@ -17,6 +17,7 @@ class GamesController < ApplicationController
 
   # POST /games
   def create
+    params.require(:game).permit(:name, :player1, :player2)
     @game = Game.new(name: params['game']['name'],
                      player1: params['game']['player1'], player2: params['game']['player2'])
     if @game.save
