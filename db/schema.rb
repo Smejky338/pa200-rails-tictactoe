@@ -10,18 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20_220_627_223_524) do
-  create_table 'games', force: :cascade do |t|
-    t.string 'name', null: false
-    t.string 'state', default: 'waiting_for_player1'
-    t.string 'board'
-    t.string 'player1', default: 'X', null: false
-    t.string 'player2', default: 'O', null: false
-    t.integer 'board_size', default: 15
-    t.integer 'winning_sequence', default: 5, null: false
-    t.integer 'turn', default: 0
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.index ['name'], name: 'index_games_on_name'
+ActiveRecord::Schema[7.0].define(version: 2022_06_27_223524) do
+  create_table "games", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "state", default: "waiting_for_player1"
+    t.string "player1", default: "X", null: false
+    t.string "player2", default: "O", null: false
+    t.integer "turn", default: 0
+    t.string "board"
+    t.integer "board_size", default: 15
+    t.integer "winning_sequence", default: 5, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_games_on_name"
   end
+
 end

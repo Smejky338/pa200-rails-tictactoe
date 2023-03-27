@@ -6,7 +6,7 @@ class CreateGames < ActiveRecord::Migration[7.0]
       table.string  :player1, null: false, default: 'X'
       table.string  :player2, null: false, default: 'O'
       table.integer :turn, default: 0
-      table.string  :board, array: true
+      table.string  :board, array: true, default: []
       table.integer :board_size, default: 15
       table.integer :winning_sequence, null: false, default: 5
       table.timestamps
