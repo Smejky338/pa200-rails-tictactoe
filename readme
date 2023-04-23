@@ -24,3 +24,5 @@ Doporučení:
  - není nutné, aby aplikace obsahovala webové UI
  - jako DB stačí sqlite, ale není to podmínka
  - doporučujeme použít Rails Scaffold se základním nastavením pro API aplikaci - https://guides.rubyonrails.org/api_app.html (pokud si nechcete dopsat i webové UI).
+
+ https://www.mongodb.com/docs/mongoid/current/tutorials/getting-started-rails7/#id2

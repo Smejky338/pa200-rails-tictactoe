@@ -1,9 +1,19 @@
+
 # Game implementation
-class Game < ApplicationRecord
-  serialize :board
-  serialize :matrix
-  before_create :prefill
+class Game# < ApplicationRecord
+  include Mongoid::Document
+
+  field :board, type: Hash # serialize :board
+  field :matrix, type: Array # serialize :matrix
   PLAYER_MARKS = %w[X O]
+
+  field :board_size, type: Integer
+  field :name, type: String
+  field :state, type: String
+  field :player1, type: String
+  field :player2, type: String
+
+  before_create :prefill
 
   validates :name, presence: true, uniqueness: true
   validates :player1, presence: true, inclusion: { in: PLAYER_MARKS }
