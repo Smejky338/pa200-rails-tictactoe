@@ -1,0 +1,45 @@
+# Deploys the main Ruby application to Azure.
+
+name: Deploy Ruby MongoDB webapp to Azure
+
+on:
+  push:
+    branches:
+      - MongoDB
+
+env:
+  AZURE_WEBAPP_NAME: pa200-social-network-527396       # Replace with your Azure Web App name
+  AZURE_WEBAPP_PACKAGE_PATH: '.'           # Path to your Rails app folder
+  #AZURE_WEBAPP_SLOT_NAME: production       # Replace with your deployment slot name, if applicable
+  AZURE_RESOURCE_GROUP: PA200_527396  # Replace with your Azure Resource Group name
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Ruby
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: 2.7.x
+
+      - name: Install dependencies
+        run: |
+          gem install bundler
+          bundle install --deployment --path vendor/bundle
+
+      - name: Build and publish artifact
+        run: |
+          RAILS_ENV=production bundle exec rake assets:precompile
+          echo "##vso[task.uploadartifact]public:$(AzureWebAppPackagePath)"
+
+      - name: Deploy to Azure Web App
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: ${{ env.AZURE_WEBAPP_NAME }}
+          package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+          slot-name: ${{ env.AZURE_WEBAPP_SLOT_NAME }}
+          resource-group: ${{ env.AZURE_RESOURCE_GROUP }}
