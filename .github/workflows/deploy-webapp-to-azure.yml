@@ -33,7 +33,7 @@ jobs:
 
       - name: Build and publish artifact
         run: |
-          RAILS_ENV=production bundle exec rake
+          RAILS_ENV=development bundle install
           echo "##vso[task.uploadartifact]public:$(AzureWebAppPackagePath)"
 
       - name: Deploy to Azure Web App
