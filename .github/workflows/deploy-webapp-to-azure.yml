@@ -10,8 +10,8 @@ on:
 env:
   AZURE_WEBAPP_NAME: pa200-social-network-527396       # Replace with your Azure Web App name
   AZURE_WEBAPP_PACKAGE_PATH: '.'           # Path to your Rails app folder
-  #AZURE_WEBAPP_SLOT_NAME: production       # Replace with your deployment slot name, if applicable
   AZURE_RESOURCE_GROUP: PA200_527396  # Replace with your Azure Resource Group name
+  AZURE_PUBLISH_PROFILE: ${{ secrets.AZURE_PUBLISH_PROFILE }}
 
 jobs:
   build-and-deploy:
@@ -20,15 +20,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-
-      - name: Install Azure CLI
-        run: |
-          curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
-
-      - name: Azure login
-        uses: azure/login@v1
-        with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
 
       - name: Set up Ruby
         uses: actions/setup-ruby@v1
@@ -49,6 +40,7 @@ jobs:
         uses: azure/webapps-deploy@v2
         with:
           app-name: ${{ env.AZURE_WEBAPP_NAME }}
+          publish-profile: ${{ env.AZURE_PUBLISH_PROFILE }}
           package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
-          slot-name: ${{ env.AZURE_WEBAPP_SLOT_NAME }}
+          #slot-name: ${{ env.AZURE_WEBAPP_SLOT_NAME }}
           resource-group: ${{ env.AZURE_RESOURCE_GROUP }}
