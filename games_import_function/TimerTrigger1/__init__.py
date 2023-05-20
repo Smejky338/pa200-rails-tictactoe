@@ -15,7 +15,6 @@ def main(mytimer: func.TimerRequest, outputDocument: func.Out[func.Document]) ->
     response = requests.get(url)
     games = response.json()
 
-    # try:
     conn_string = os.environ["CONN_STRING"]
     client = MongoClient(conn_string)
     db = client.admin
@@ -29,13 +28,8 @@ def main(mytimer: func.TimerRequest, outputDocument: func.Out[func.Document]) ->
             logging.info(f"Game '{game['name']}' already exists. Skipping insertion.")
             continue
 
-        # Insert the game into the collection
+        # Insert game into collection
         collection.insert_one(game)
         logging.info(f"Inserted game '{game['name']}' into MongoDB.")
 
-    # Log a message indicating the successful import
     logging.info("Games imported successfully")
-
-    # except Exception as e:
-    #    pass
-    #    logging.error(f"Error occurred during game import: {str(e)}")
